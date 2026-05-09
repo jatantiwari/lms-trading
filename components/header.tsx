@@ -10,20 +10,21 @@ export function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Courses', href: '/courses' },
     { label: 'Curriculum', href: '/curriculum' },
-    // { label: 'Mentors', href: '/mentors' },
     { label: 'Results', href: '/results' },
     { label: 'Who Can Join', href: '/who-can-join' },
-    { label: 'Courses', href: '/courses' },
-    // { label: 'Pricing', href: /'/pricing' },
+    { label: 'About', href: '/about' },
+    { label: 'Contact', href: '/contact' },
   ];
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="w-20 h-20 relative">
+          <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
+            <div className="w-14 h-14 sm:w-20 sm:h-20 relative flex-shrink-0">
               <Image 
                 src="/logo.png" 
                 alt="Financial Freedom Mentor" 
@@ -32,8 +33,8 @@ export function Header() {
                 className="w-full h-full"
               />
             </div>
-            <div className="hidden sm:block">
-              <div className="text-lg font-bold text-primary">Financial Freedom</div>
+            <div>
+              <div className="text-sm sm:text-lg font-bold text-primary leading-tight">Financial Freedom</div>
               <div className="text-xs text-foreground">Mentor</div>
             </div>
           </Link>
@@ -87,13 +88,8 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
-            <div className="flex gap-2 mt-4">
-              <Link href="/courses" className="flex-1" onClick={() => setIsOpen(false)}>
-                <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary/10">
-                  Pricing
-                </Button>
-              </Link>
-              <Link href="/register" className="flex-1" onClick={() => setIsOpen(false)}>
+            <div className="pt-4 px-4">
+              <Link href="/register" onClick={() => setIsOpen(false)}>
                 <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                   Register
                 </Button>
