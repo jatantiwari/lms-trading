@@ -8,7 +8,7 @@ import { HeroCarousel } from '../hero-carousel';
 const heroSlides = [
   {
     id: 1,
-    image: '/stock-market-trader.jpg',
+    image: '/stock-market-trader.png',
     alt: 'Stock Trading Hero',
     badge: '📈 Master the Markets',
     title: 'Stock Obsessed Trading',
@@ -16,7 +16,7 @@ const heroSlides = [
   },
   {
     id: 2,
-    image: '/ai-powered-device-concept.jpg',
+    image: '/c5.png',
     alt: 'Index Trading Hero',
     badge: '🎯 Index Trading',
     title: 'Trade Nifty Like a Pro',

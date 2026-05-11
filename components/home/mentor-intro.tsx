@@ -18,7 +18,7 @@ export function MentorIntro() {
                 alt="Lead Mentor"
                 width={600}
                 height={500}
-                className="w-full h-125 object-cover"
+                className="w-full h-125 object-contain"
               />
             </div>
             <div className="absolute -bottom-6 -right-6 bg-card border border-primary/30 rounded-xl p-4 shadow-xl">
