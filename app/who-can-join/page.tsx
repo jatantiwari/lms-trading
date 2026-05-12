@@ -61,7 +61,7 @@ export default function WhoCanJoinPage() {
         'Learn institutional-level commodity strategies',
         'Build systematic wealth management skills',
       ],
-      courseRecommendation: 'Elite Plan (6 months) — ₹50,000',
+      courseRecommendation: 'Elite Plan (6 months) — ₹45,000',
     },
     {
       icon: Lightbulb,
@@ -79,7 +79,7 @@ export default function WhoCanJoinPage() {
         'Personal mentorship to fast-track growth',
         'Clear path to full-time trading career',
       ],
-      courseRecommendation: 'Elite Plan (6 months) — ₹50,000',
+      courseRecommendation: 'Elite Plan (6 months) — ₹45,000',
     },
     {
       icon: Users,

@@ -32,7 +32,7 @@ type FormData = {
 const PLAN_PRICES: Record<string, string> = {
   Basic: '₹10,000 / 1 Month',
   Pro: '₹25,000 / 3 Months',
-  Elite: '₹50,000 / 6 Months',
+  Elite: '₹45,000 / 6 Months',
 };
 
 const EMPTY_FORM: FormData = {

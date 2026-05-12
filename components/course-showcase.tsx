@@ -52,7 +52,7 @@ const plans: Plan[] = [
     id: 3,
     badge: 'Best Value',
     title: 'Elite Plan',
-    price: '₹50,000',
+    price: '₹45,000',
     duration: '6 Months',
     description: 'Complete transformation from beginner to advanced with personal mentorship.',
     features: [

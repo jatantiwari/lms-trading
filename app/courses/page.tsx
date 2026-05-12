@@ -6,7 +6,7 @@ import { CTASection } from '@/components/cta-section';
 
 export const metadata: Metadata = {
   title: 'Courses & Pricing - Financial Freedom Mentor | Commodity Trading Mentorship',
-  description: 'Choose from Basic (₹10,000), Pro (₹25,000), or Elite (₹50,000) commodity trading mentorship plans. MCX Gold, Silver, Crude Oil and more.',
+  description: 'Choose from Basic (₹10,000), Pro (₹25,000), or Elite (45,000) commodity trading mentorship plans. MCX Gold, Silver, Crude Oil and more.',
 };
 
 const pricingPlans = [
@@ -47,7 +47,7 @@ const pricingPlans = [
   },
   {
     name: 'Elite',
-    price: 50000,
+    price: 45000,
     currency: '₹',
     duration: '6 Months',
     description: 'Complete mastery — Beginner to Advanced with personal mentorship.',

@@ -104,7 +104,7 @@ export default function CurriculumPage() {
                     </p>
                   </div>
                   <div className="md:text-right shrink-0">
-                    <div className="text-3xl font-extrabold text-primary">₹50,000</div>
+                    <div className="text-3xl font-extrabold text-primary">₹45,000</div>
                     <div className="text-sm text-muted-foreground">6 Months</div>
                     <Link href="/courses" className="mt-3 inline-block">
                       <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
