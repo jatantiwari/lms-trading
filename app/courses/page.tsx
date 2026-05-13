@@ -5,8 +5,8 @@ import { PricingTable } from '@/components/pricing-table';
 import { CTASection } from '@/components/cta-section';
 
 export const metadata: Metadata = {
-  title: 'Courses & Pricing - Financial Freedom Mentor | Commodity Trading Mentorship',
-  description: 'Choose from Basic (₹10,000), Pro (₹25,000), or Elite (45,000) commodity trading mentorship plans. MCX Gold, Silver, Crude Oil and more.',
+  title: 'Courses & Pricing - Financial Freedom Mentor | Stock Market Trading Mentorship',
+  description: 'Choose from Basic (₹10,000), Pro (₹25,000), or Elite (₹50,000) stock market trading mentorship plans. Technical analysis, live trading, personal mentorship & more.',
 };
 
 const pricingPlans = [
@@ -15,16 +15,17 @@ const pricingPlans = [
     price: 10000,
     currency: '₹',
     duration: '1 Month',
-    description: 'Perfect launchpad for beginners entering commodity markets.',
+    description: 'Quick Start Program for beginners — build a strong foundation in stock market basics.',
     features: [
-      { name: 'Basics of commodity trading', included: true },
-      { name: '1 core strategy', included: true },
-      { name: 'Limited live sessions', included: true },
-      { name: 'Community access', included: true },
-      { name: 'Full strategy system', included: false },
-      { name: 'Advanced price action', included: false },
-      { name: 'Personal mentorship', included: false },
-      { name: 'Lifetime access + updates', included: false },
+      { name: 'Beginner to Intermediate Technical Analysis', included: true },
+      { name: 'Market Basics (NSE, BSE, Order Types, Charts)', included: true },
+      { name: 'Candlestick Patterns & Support/Resistance', included: true },
+      { name: '4 Live Classes (1 per week)', included: true },
+      { name: 'Basic Strategy Introduction', included: true },
+      { name: 'Community Access (Basic Group)', included: true },
+      { name: 'Live Trading Sessions', included: false },
+      { name: 'Advanced Strategies', included: false },
+      { name: 'Personal Mentorship', included: false },
     ],
   },
   {
@@ -32,17 +33,19 @@ const pricingPlans = [
     price: 25000,
     currency: '₹',
     duration: '3 Months',
-    description: 'Full strategy system with live trading and hands-on support.',
+    description: 'Complete Trader Development Program — make you market-ready with real skills.',
     popular: true,
     features: [
-      { name: 'All Basic Plan content', included: true },
-      { name: 'Full strategy system', included: true },
-      { name: 'Regular live trading sessions', included: true },
-      { name: 'Advanced price action', included: true },
-      { name: 'Trade support + doubt solving', included: true },
-      { name: 'Personal mentorship', included: false },
-      { name: 'Daily live trading', included: false },
-      { name: 'Lifetime access + updates', included: false },
+      { name: 'Everything in Basic', included: true },
+      { name: 'Advanced Technical Analysis', included: true },
+      { name: 'Intraday + Swing Trading Strategies', included: true },
+      { name: 'Live Market Sessions (2–3 days/week)', included: true },
+      { name: 'Trade Setups (For Learning)', included: true },
+      { name: 'Weekly Q&A + Doubt Solving', included: true },
+      { name: 'Trade Review Sessions', included: true },
+      { name: 'Private VIP Community Access', included: true },
+      { name: 'Risk Management System', included: true },
+      { name: 'Trading Psychology Training', included: true },
     ],
   },
   {
@@ -50,14 +53,19 @@ const pricingPlans = [
     price: 45000,
     currency: '₹',
     duration: '6 Months',
-    description: 'Complete mastery — Beginner to Advanced with personal mentorship.',
+    description: 'Full Financial Freedom Mentorship Program — become an independent trader/investor.',
     features: [
-      { name: 'All Pro Plan content', included: true },
-      { name: 'Complete mastery (Beginner → Advanced)', included: true },
-      { name: 'Daily live trading', included: true },
-      { name: 'Personal mentorship', included: true },
-      { name: 'Psychology coaching', included: true },
-      { name: 'Lifetime access + updates', included: true },
+      { name: 'Everything in Pro', included: true },
+      { name: 'Live Market Sessions (3–5 days/week)', included: true },
+      { name: 'Fundamental Analysis & Long-Term Investing', included: true },
+      { name: 'Portfolio Building Strategies', included: true },
+      { name: '1-on-1 Mentorship (3–5 Calls)', included: true },
+      { name: 'Personalized Trading Plan', included: true },
+      { name: 'Advanced Risk Management', included: true },
+      { name: 'Options Basics + Income Strategies', included: true },
+      { name: 'Priority Support (WhatsApp/Direct)', included: true },
+      { name: 'Lifetime Access to Recordings', included: true },
+      { name: 'Certification of Completion', included: true },
     ],
   },
 ];
@@ -72,13 +80,13 @@ export default function CoursesPage() {
           <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto space-y-5">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
-                <span className="text-sm font-semibold text-primary tracking-wide">Commodity Trading Mentorship</span>
+                <span className="text-sm font-semibold text-primary tracking-wide">Stock Market Mentorship Program</span>
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-foreground leading-tight">
                 Simple, Transparent <span className="text-primary">Pricing</span>
               </h1>
               <p className="text-base md:text-xl text-muted-foreground">
-                Three plans designed to take you from complete beginner to professional commodity trader. No hidden fees.
+                Three plans designed to take you from complete beginner to confident, independent trader. No hidden fees.
               </p>
             </div>
           </div>
@@ -100,20 +108,20 @@ export default function CoursesPage() {
             <div className="space-y-6">
               {[
                 {
-                  q: 'What commodities will I learn to trade?',
-                  a: 'You will learn to trade Gold, Silver, Crude Oil, and Natural Gas on MCX, along with global commodities including LME metals and COMEX futures in the Elite Plan.',
+                  q: 'What will I learn in this stock market mentorship?',
+                  a: 'You will learn everything from stock market basics, technical analysis, candlestick patterns, intraday & swing trading strategies, risk management, trading psychology, fundamental analysis, portfolio building, and options basics — all the way to becoming an independent trader.',
                 },
                 {
                   q: 'Do I need prior trading experience?',
-                  a: 'Absolutely not. The Basic Plan starts from zero — we cover what commodities are, how MCX works, contract specs, and your first strategy. No prior experience is needed.',
+                  a: 'Absolutely not. The Basic Plan starts from zero — we cover market basics, NSE/BSE, order types, charts, and foundational strategies. No prior experience is needed.',
                 },
                 {
                   q: 'Are the live sessions recorded?',
-                  a: 'Yes. All live sessions are recorded and available for replay. You can learn at your own pace alongside the live schedule.',
+                  a: 'Yes. All live sessions are recorded and available for replay. Elite plan includes lifetime access to all recordings.',
                 },
                 {
                   q: 'What is the difference between Pro and Elite?',
-                  a: 'Pro gives you the full strategy system with regular live sessions and doubt solving. Elite adds daily live trading, personal one-on-one mentorship, psychology coaching, and lifetime access with all future updates.',
+                  a: 'Pro gives you advanced technical analysis, live market sessions (2–3 days/week), trade setups, weekly Q&A, trade reviews, VIP community access, risk management, and psychology training. Elite adds live sessions (3–5 days/week), fundamental analysis, 1-on-1 mentorship (3–5 calls), personalized trading plan, advanced risk management, options & income strategies, priority WhatsApp support, lifetime access, and certification.',
                 },
                 {
                   q: 'Do you offer a money-back guarantee?',
@@ -121,7 +129,11 @@ export default function CoursesPage() {
                 },
                 {
                   q: 'How do I choose the right plan?',
-                  a: 'If you are a complete beginner with limited capital, start with Basic. If you want a full strategy system with live support, choose Pro. If you want personal mentorship and daily live trading, invest in Elite. Contact us for a free consultation.',
+                  a: 'If you are a complete beginner wanting to test the market, start with Basic. If you are serious about learning real trading skills and becoming market-ready, choose Pro (our most popular plan). If you want full transformation with personal mentorship and lifetime access, invest in Elite. Contact us for a free consultation.',
+                },
+                {
+                  q: 'What is the Elite plan price?',
+                  a: 'The Elite plan is ₹50,000 for 6 months, which includes everything in Pro plus 1-on-1 mentorship, daily live sessions (3–5 days/week), fundamental analysis, portfolio building, priority support, lifetime access, and certification.',
                 },
               ].map((item, i) => (
                 <div key={i} className="border-b border-border pb-6 last:border-b-0">
@@ -134,8 +146,8 @@ export default function CoursesPage() {
         </section>
 
         <CTASection
-          title="Start Your Commodity Trading Journey Today"
-          description="Join thousands of successful MCX traders. Choose your plan and get started with expert mentorship — from basics to daily live trading."
+          title="Start Your Stock Market Journey Today"
+          description="Join thousands of successful traders. Choose your plan and get started with expert mentorship — from basics to live trading to complete financial freedom."
           primaryButtonText="Enroll Now"
           primaryButtonHref="/register"
         />

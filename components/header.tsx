@@ -81,7 +81,7 @@ export function Header() {
           {/* Register Button - Desktop */}
           <div className="hidden md:block">
              <Link href="/register">
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm hover:shadow-md transition-all duration-300 rounded-full px-6">
+            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm hover:shadow-md transition-all duration-300 rounded-full px-6 cursor-pointer">
               Register
             </Button>
             </Link>
@@ -89,7 +89,7 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 -mr-2 rounded-md hover:bg-accent transition-colors"
+            className="md:hidden p-2 -mr-2 rounded-md hover:bg-accent transition-colors cursor-pointer"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -120,7 +120,7 @@ export function Header() {
             ))}
             <div className="pt-4 px-4">
               <Link href="/register" onClick={() => setIsOpen(false)}>
-                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground cursor-pointer">
                   Register
                 </Button>
               </Link>

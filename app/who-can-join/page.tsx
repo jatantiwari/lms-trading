@@ -237,7 +237,7 @@ export default function WhoCanJoinPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/courses">
-                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 shadow-lg shadow-primary/25">
+                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 shadow-lg shadow-primary/25 cursor-pointer">
                   View All Plans
                 </Button>
               </Link>

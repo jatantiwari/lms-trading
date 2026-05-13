@@ -31,7 +31,7 @@ export function FAQ() {
           {faqs.map((faq, idx) => (
             <div key={idx} className="rounded-xl border border-border bg-card overflow-hidden">
               <button
-                className="w-full flex justify-between items-center p-5 text-left font-semibold text-foreground hover:text-primary transition-colors"
+                className="w-full flex justify-between items-center p-5 text-left font-semibold text-foreground hover:text-primary transition-colors cursor-pointer"
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
               >
                 {faq.q}

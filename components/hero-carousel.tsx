@@ -110,7 +110,7 @@ export function HeroCarousel({
       {/* Navigation Buttons */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary border border-white/20 hover:border-primary text-white backdrop-blur-sm transition-all duration-300 hover:scale-110"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary border border-white/20 hover:border-primary text-white backdrop-blur-sm transition-all duration-300 hover:scale-110 cursor-pointer"
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-5 h-5" />
@@ -118,7 +118,7 @@ export function HeroCarousel({
 
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary border border-white/20 hover:border-primary text-white backdrop-blur-sm transition-all duration-300 hover:scale-110"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary border border-white/20 hover:border-primary text-white backdrop-blur-sm transition-all duration-300 hover:scale-110 cursor-pointer"
         aria-label="Next slide"
       >
         <ChevronRight className="w-5 h-5" />
@@ -130,7 +130,7 @@ export function HeroCarousel({
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`transition-all duration-300 rounded-full ${
+            className={`transition-all duration-300 rounded-full cursor-pointer ${
               index === currentSlide
                 ? 'bg-primary w-8 h-2.5'
                 : 'bg-white/40 hover:bg-white/70 w-2.5 h-2.5'

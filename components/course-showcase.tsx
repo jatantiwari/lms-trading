@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Check, Clock, Flame } from 'lucide-react';
+import { Check, Clock, Flame, Crown, Sparkles } from 'lucide-react';
 
 interface Plan {
   id: number;
@@ -22,7 +22,7 @@ const plans: Plan[] = [
     title: 'Basic Plan',
     price: '₹10,000',
     duration: '1 Month',
-    description: 'The perfect launchpad for absolute beginners entering commodity markets.',
+    description: 'Quick Start Program for beginners — build a strong foundation in commodity trading.',
     features: [
       'Basics of commodity trading',
       '1 core strategy',
@@ -38,7 +38,7 @@ const plans: Plan[] = [
     title: 'Pro Plan',
     price: '₹25,000',
     duration: '3 Months',
-    description: 'Full strategy system with live sessions and hands-on trade support.',
+    description: 'Complete Trader Development Program — full strategy system with live support.',
     features: [
       'Full strategy system',
       'Regular live trading sessions',
@@ -54,10 +54,10 @@ const plans: Plan[] = [
     title: 'Elite Plan',
     price: '₹45,000',
     duration: '6 Months',
-    description: 'Complete transformation from beginner to advanced with personal mentorship.',
+    description: 'Full Financial Freedom Mentorship — complete mastery with personal mentorship.',
     features: [
       'Complete mastery (Beginner → Advanced)',
-      'Daily live trading',
+      'Daily live trading (3–5 days/week)',
       'Personal mentorship',
       'Psychology coaching',
       'Lifetime access + updates',
@@ -77,14 +77,14 @@ export function CourseShowcase() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary border border-primary/30 bg-primary/10 px-4 py-1.5 rounded-full">
-            Featured Courses
+            Pricing Structure
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-foreground leading-tight">
             Choose Your{' '}
             <span className="text-primary">Trading Plan</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Structured programs for every stage — from first trade to full-time trading career.
+            Three plans designed to take you from complete beginner to professional commodity trader.
           </p>
         </div>
 
@@ -99,7 +99,7 @@ export function CourseShowcase() {
                   : 'border-border hover:border-primary/40'
               }`}
             >
-              {/* Gold shimmer top line (always on featured, hover on others) */}
+              {/* Gold shimmer top line */}
               <div
                 className={`absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent transition-opacity duration-300 ${
                   plan.featured ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
@@ -117,7 +117,7 @@ export function CourseShowcase() {
                 {/* Badge */}
                 {plan.badge && (
                   <div className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-primary-foreground bg-primary px-3 py-1 rounded-full mb-4">
-                    <Flame className="w-3 h-3" />
+                    {plan.badge === 'Most Popular' ? <Flame className="w-3 h-3" /> : <Sparkles className="w-3 h-3" />}
                     {plan.badge}
                   </div>
                 )}
@@ -158,7 +158,7 @@ export function CourseShowcase() {
               <div className="px-7 pb-8 bg-card">
                 <Link href={plan.href} className="block">
                   <button
-                    className={`w-full py-3 rounded-xl font-bold text-sm transition-all duration-200 ${
+                    className={`w-full py-3 rounded-xl font-bold text-sm transition-all duration-200 cursor-pointer ${
                       plan.featured
                         ? 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-primary/40'
                         : 'bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 hover:border-primary/60'
@@ -170,6 +170,29 @@ export function CourseShowcase() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Program Features Highlight */}
+        <div className="mt-16 p-8 rounded-2xl bg-card border border-border relative overflow-hidden">
+          <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent" />
+          <h3 className="text-xl font-extrabold text-foreground text-center mb-6">
+            Program Features (All Plans)
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              'Live trading sessions (MCX hours)',
+              'Recorded lectures access',
+              'Daily trade setups',
+              'Private community (Telegram/Discord)',
+              'Personal mentorship support',
+              'Lifetime strategy updates (Elite only)',
+            ].map((feature) => (
+              <div key={feature} className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-primary shrink-0" />
+                <span className="text-xs text-muted-foreground">{feature}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Footer note */}

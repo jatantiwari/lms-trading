@@ -54,7 +54,7 @@ export function MentorIntro() {
               ))}
             </ul>
             <Link href="/about">
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground cursor-pointer">
                 Know More About Mentor
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

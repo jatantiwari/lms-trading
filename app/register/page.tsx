@@ -309,7 +309,7 @@ export default function RegisterPage() {
                   </div>
 
                   <Button type="submit" disabled={submitting}
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-base font-bold shadow-lg shadow-primary/25">
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-base font-bold shadow-lg shadow-primary/25 cursor-pointer">
                     {submitting ? (
                       <span className="flex items-center gap-2"><Loader2 className="w-5 h-5 animate-spin" />Processing…</span>
                     ) : (

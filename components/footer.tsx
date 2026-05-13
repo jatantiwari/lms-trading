@@ -114,7 +114,7 @@ export function Footer() {
                 placeholder="Your email"
                 className="bg-background border-border text-foreground text-sm"
               />
-              <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground px-3">
+              <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground px-3 cursor-pointer">
                 <Mail className="w-4 h-4" />
               </Button>
             </div>

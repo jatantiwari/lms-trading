@@ -90,7 +90,7 @@ const heroSlides = [
               <Link href="/courses">
                 <Button
                   size="lg"
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-shadow"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-shadow cursor-pointer"
                 >
                   Start Learning Now
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -100,7 +100,7 @@ const heroSlides = [
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm w-full sm:w-auto"
+                  className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm w-full sm:w-auto cursor-pointer"
                 >
                   Get Free Consultation
                 </Button>
