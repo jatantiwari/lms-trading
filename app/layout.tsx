@@ -77,7 +77,7 @@ export default function RootLayout({
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
       telephone: '+91-80001-60017',
-      email: 'ffmentor2024@gmail.com',
+      email: 'info@ffmentor.com',
     },
     aggregateRating: {
       '@type': 'AggregateRating',

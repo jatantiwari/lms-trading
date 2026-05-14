@@ -1,7 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
-import { Check, Clock, Flame, Crown, Sparkles } from 'lucide-react';
+import { Check, Clock, Flame, Sparkles, TrendingUp, BarChart2 } from 'lucide-react';
 
 interface Plan {
   id: number;
@@ -15,7 +16,7 @@ interface Plan {
   href: string;
 }
 
-const plans: Plan[] = [
+const commodityPlans: Plan[] = [
   {
     id: 1,
     badge: null,
@@ -40,9 +41,9 @@ const plans: Plan[] = [
     duration: '3 Months',
     description: 'Complete Trader Development Program — full strategy system with live support.',
     features: [
-      'Full strategy system',
-      'Regular live trading sessions',
-      'Advanced price action',
+      'Full commodity strategy system',
+      'Regular live trading sessions (MCX hours)',
+      'Advanced price action for commodities',
       'Trade support + doubt solving',
     ],
     featured: true,
@@ -67,7 +68,64 @@ const plans: Plan[] = [
   },
 ];
 
+const stockPlans: Plan[] = [
+  {
+    id: 1,
+    badge: null,
+    title: 'Basic Plan',
+    price: '₹10,000',
+    duration: '1 Month',
+    description: 'Quick Start Program for beginners — build a strong foundation in stock market trading.',
+    features: [
+      'Basics of stock market & NSE/BSE',
+      '1 core equity strategy',
+      'Limited live sessions',
+      'Community access',
+    ],
+    featured: false,
+    href: '/courses',
+  },
+  {
+    id: 2,
+    badge: 'Most Popular',
+    title: 'Pro Plan',
+    price: '₹25,000',
+    duration: '3 Months',
+    description: 'Complete Stock Trader Development Program — full strategy system with live support.',
+    features: [
+      'Full equity & F&O strategy system',
+      'Regular live trading sessions (NSE hours)',
+      'Advanced technical analysis for stocks',
+      'Trade support + doubt solving',
+    ],
+    featured: true,
+    href: '/courses',
+  },
+  {
+    id: 3,
+    badge: 'Best Value',
+    title: 'Elite Plan',
+    price: '₹45,000',
+    duration: '6 Months',
+    description: 'Full Financial Freedom Mentorship — complete stock market mastery with personal mentorship.',
+    features: [
+      'Complete mastery (Beginner → Advanced)',
+      'Daily live trading (3–5 days/week)',
+      'Personal mentorship',
+      'Psychology & portfolio management',
+      'Lifetime access + updates',
+    ],
+    featured: false,
+    href: '/courses',
+  },
+];
+
+type Category = 'commodity' | 'stock';
+
 export function CourseShowcase() {
+  const [activeCategory, setActiveCategory] = useState<Category>('commodity');
+  const plans = activeCategory === 'commodity' ? commodityPlans : stockPlans;
+
   return (
     <section className="py-24 bg-background relative overflow-hidden">
       {/* background glow */}
@@ -75,7 +133,7 @@ export function CourseShowcase() {
 
       <div className="container max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-10 space-y-4">
           <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary border border-primary/30 bg-primary/10 px-4 py-1.5 rounded-full">
             Pricing Structure
           </span>
@@ -84,7 +142,44 @@ export function CourseShowcase() {
             <span className="text-primary">Trading Plan</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Three plans designed to take you from complete beginner to professional commodity trader.
+            Separate programs for Commodity Trading and Stock Trading — same world-class mentorship.
+          </p>
+        </div>
+
+        {/* Category Tab Switcher */}
+        <div className="flex justify-center mb-12">
+          <div className="inline-flex items-center gap-1 p-1 rounded-xl bg-card border border-border">
+            <button
+              onClick={() => setActiveCategory('commodity')}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-200 cursor-pointer ${
+                activeCategory === 'commodity'
+                  ? 'bg-primary text-primary-foreground shadow-md shadow-primary/30'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <BarChart2 className="w-4 h-4" />
+              Commodity Trading
+            </button>
+            <button
+              onClick={() => setActiveCategory('stock')}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-200 cursor-pointer ${
+                activeCategory === 'stock'
+                  ? 'bg-primary text-primary-foreground shadow-md shadow-primary/30'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <TrendingUp className="w-4 h-4" />
+              Stock Trading
+            </button>
+          </div>
+        </div>
+
+        {/* Section label */}
+        <div className="text-center mb-8">
+          <p className="text-muted-foreground text-sm">
+            {activeCategory === 'commodity'
+              ? 'Plans for MCX Commodity Trading (Gold, Silver, Crude Oil & more)'
+              : 'Plans for NSE/BSE Stock Trading (Equity, F&O & more)'}
           </p>
         </div>
 
@@ -179,14 +274,26 @@ export function CourseShowcase() {
             Program Features (All Plans)
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              'Live trading sessions (MCX hours)',
-              'Recorded lectures access',
-              'Daily trade setups',
-              'Private community (Telegram/Discord)',
-              'Personal mentorship support',
-              'Lifetime strategy updates (Elite only)',
-            ].map((feature) => (
+            {(activeCategory === 'commodity'
+              ? [
+                  'Live trading sessions (MCX hours)',
+                  'Recorded lectures access',
+                  'Daily trade setups',
+                  'Private community (Telegram/Discord)',
+                  'Personal mentorship support',
+                  'Lifetime strategy updates (Elite only)',
+                  'Guide for all NISM exams',
+                ]
+              : [
+                  'Live trading sessions (NSE hours)',
+                  'Recorded lectures access',
+                  'Daily stock & F&O setups',
+                  'Private community (Telegram/Discord)',
+                  'Personal mentorship support',
+                  'Lifetime strategy updates (Elite only)',
+                  'Guide for all NISM exams',
+                ]
+            ).map((feature) => (
               <div key={feature} className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-primary shrink-0" />
                 <span className="text-xs text-muted-foreground">{feature}</span>
@@ -199,7 +306,7 @@ export function CourseShowcase() {
         <p className="text-center text-sm text-muted-foreground mt-10">
           All plans include community access and course materials.{' '}
           <Link href="/contact" className="text-primary hover:underline underline-offset-4">
-            Contact us
+            Contact Us us
           </Link>{' '}
           for group or corporate pricing.
         </p>

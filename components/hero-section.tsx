@@ -82,7 +82,7 @@ const heroSlides = [
             </h1>
 
             <p className="text-base md:text-xl text-white/80 leading-relaxed max-w-lg">
-              Master Gold, Crude Oil, and Global Commodities Like a Professional
+              Master Nifty, Bank Nifty, Sensex, Gold, Crude Oil, and Global Commodities Like a Professional
             </p>
 
             {/* CTA Buttons */}

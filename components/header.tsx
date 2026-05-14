@@ -13,13 +13,13 @@ export function Header() {
 
   const navItems = [
     { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
     { label: 'Courses', href: '/courses' },
     { label: 'Curriculum', href: '/curriculum' },
     { label: 'Results', href: '/results' },
     { label: 'Who Can Join', href: '/who-can-join' },
     { label: 'Commodity ', href: '/commodity' },
-    { label: 'About', href: '/about' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Contact Us', href: '/contact' },
   ];
 
   const isActive = (href: string) => {
