@@ -58,6 +58,7 @@ export default function RegisterPage() {
   const [submitting, setSubmitting] = useState(false);
   const [apiError, setApiError] = useState('');
   const [paid, setPaid] = useState(false);
+  const [pendingBanner, setPendingBanner] = useState('');
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -92,11 +93,74 @@ export default function RegisterPage() {
     if (apiError) setApiError('');
   };
 
+  /** Opens the Razorpay checkout modal given an order payload */
+  const openRazorpay = (payload: {
+    razorpayOrderId: string;
+    amount: number;
+    currency: string;
+    razorpayKeyId: string;
+    studentName: string;
+    emailId: string;
+    mobileNumber: string;
+    preferredCoursePlan: string;
+  }) => {
+    const options = {
+      key: payload.razorpayKeyId,
+      amount: payload.amount,
+      currency: payload.currency,
+      name: 'Financial Freedom Mentor',
+      description: `${payload.preferredCoursePlan} Plan Mentorship`,
+      order_id: payload.razorpayOrderId,
+      prefill: { name: payload.studentName, email: payload.emailId, contact: payload.mobileNumber },
+      theme: { color: '#D4A017' },
+      modal: {
+        ondismiss: () => {
+          setSubmitting(false);
+          setApiError('Payment was cancelled. Your account has been created — you can complete payment later by contacting us.');
+        },
+      },
+      handler: async (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) => {
+        try {
+          const verifyRes = await fetch(`${API_URL}/seo-registration/verify-payment`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              razorpayOrderId: response.razorpay_order_id,
+              razorpayPaymentId: response.razorpay_payment_id,
+              razorpaySignature: response.razorpay_signature,
+            }),
+          });
+          const verifyData = await verifyRes.json();
+          if (!verifyRes.ok) {
+            setApiError(verifyData.message ?? 'Payment verification failed. Please contact support.');
+          } else {
+            setPendingBanner('');
+            setPaid(true);
+          }
+        } catch {
+          setApiError('Network error during verification. Please contact support with your payment ID.');
+        } finally {
+          setSubmitting(false);
+        }
+      },
+    };
+
+    if (!window.Razorpay) {
+      setApiError('Payment gateway failed to load. Please refresh and try again.');
+      setSubmitting(false);
+      return;
+    }
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
     setSubmitting(true);
     setApiError('');
+    setPendingBanner('');
 
     try {
       const res = await fetch(`${API_URL}/seo-registration/register`, {
@@ -106,62 +170,40 @@ export default function RegisterPage() {
       });
 
       const data = await res.json();
+
       if (!res.ok) {
         setApiError(data.message ?? 'Registration failed. Please try again.');
         setSubmitting(false);
         return;
       }
 
-      const { razorpayOrderId, amount, currency, razorpayKeyId, studentName, emailId } = data.data;
-
-      const options = {
-        key: razorpayKeyId,
-        amount,
-        currency,
-        name: 'Financial Freedom Mentor',
-        description: `${formData.preferredCoursePlan} Plan — ${formData.courseCategory} Mentorship`,
-        order_id: razorpayOrderId,
-        prefill: { name: studentName, email: emailId, contact: formData.mobileNumber },
-        theme: { color: '#D4A017' },
-        modal: {
-          ondismiss: () => {
-            setSubmitting(false);
-            setApiError('Payment was cancelled. Your account has been created — you can complete payment later by contacting us.');
-          },
-        },
-        handler: async (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) => {
-          try {
-            const verifyRes = await fetch(`${API_URL}/seo-registration/verify-payment`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                razorpayOrderId: response.razorpay_order_id,
-                razorpayPaymentId: response.razorpay_payment_id,
-                razorpaySignature: response.razorpay_signature,
-              }),
-            });
-            const verifyData = await verifyRes.json();
-            if (!verifyRes.ok) {
-              setApiError(verifyData.message ?? 'Payment verification failed. Please contact support.');
-            } else {
-              setPaid(true);
-            }
-          } catch {
-            setApiError('Network error during verification. Please contact support with your payment ID.');
-          } finally {
-            setSubmitting(false);
-          }
-        },
-      };
-
-      if (!window.Razorpay) {
-        setApiError('Payment gateway failed to load. Please refresh and try again.');
-        setSubmitting(false);
+      // Pending payment resume — account exists but payment not completed
+      if (data.data?.pendingPayment) {
+        setPendingBanner(data.message ?? 'You have an incomplete registration. Please complete your payment.');
+        openRazorpay({
+          razorpayOrderId: data.data.razorpayOrderId,
+          amount: data.data.amount,
+          currency: data.data.currency,
+          razorpayKeyId: data.data.razorpayKeyId,
+          studentName: data.data.studentName,
+          emailId: data.data.emailId,
+          mobileNumber: data.data.mobileNumber ?? formData.mobileNumber,
+          preferredCoursePlan: data.data.preferredCoursePlan,
+        });
         return;
       }
 
-      const rzp = new window.Razorpay(options);
-      rzp.open();
+      // Fresh registration — open Razorpay normally
+      openRazorpay({
+        razorpayOrderId: data.data.razorpayOrderId,
+        amount: data.data.amount,
+        currency: data.data.currency,
+        razorpayKeyId: data.data.razorpayKeyId,
+        studentName: data.data.studentName,
+        emailId: data.data.emailId,
+        mobileNumber: formData.mobileNumber,
+        preferredCoursePlan: formData.preferredCoursePlan,
+      });
     } catch {
       setApiError('Network error. Please check your connection and try again.');
       setSubmitting(false);
@@ -228,6 +270,16 @@ export default function RegisterPage() {
               <div className="h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
               <div className="p-8 md:p-10">
                 <form onSubmit={handleSubmit} className="space-y-8">
+
+                  {pendingBanner && (
+                    <div className="flex items-start gap-3 bg-amber-50 border border-amber-300 rounded-xl p-4 text-sm text-amber-800">
+                      <AlertCircle className="w-5 h-5 shrink-0 mt-0.5 text-amber-500" />
+                      <div>
+                        <p className="font-semibold mb-0.5">Incomplete Payment Detected</p>
+                        <p>{pendingBanner}</p>
+                      </div>
+                    </div>
+                  )}
 
                   {apiError && (
                     <div className="flex items-start gap-3 bg-destructive/10 border border-destructive/30 rounded-xl p-4 text-sm text-destructive">
